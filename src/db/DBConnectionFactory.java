@@ -1,0 +1,40 @@
+package db;
+
+import db.mysql.MySQLConnection;
+
+public class DBConnectionFactory {
+	private static final String DEFAULT_DB = "mysql"; // create sql by default
+	 
+	public static DBConnection getConnection(String db) {
+		switch(db) {
+		case "mysql":
+			return new MySQLConnection();
+			//return null;
+		case "mongodb":
+			//return new MongoDBConnection();
+			return null;
+		default:
+			throw new IllegalArgumentException("Invalid");
+		}
+	}
+	
+	// if there is no parameter provided , create the default Connection
+	public static DBConnection getConnection() {
+		return getConnection(DEFAULT_DB);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
